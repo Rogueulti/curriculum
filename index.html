@@ -190,22 +190,40 @@ Además, cuento con experiencia en mantenimiento preventivo y correctivo, instal
     function PDF() {
       const e = document.querySelector(".container");
 
+      // 1. Guardamos los estilos originales para no romper tu página web
+      const originalMaxWidth = e.style.maxWidth;
+      const originalWidth = e.style.width;
+      const originalMargin = e.style.margin;
+      const originalBg = e.style.background;
+
+      // 2. Forzamos el contenedor a un tamaño de escritorio fijo
+      e.style.maxWidth = "1100px";
+      e.style.width = "1100px";
+      e.style.margin = "0"; // Quitamos el margen para aprovechar todo el ancho del PDF
+      
+      // Opcional: html2pdf a veces tiene problemas con el "backdrop-filter" (efecto cristal). 
+      // Si el fondo del PDF sale gris/blanco, descomenta la siguiente línea para forzar un fondo sólido en el PDF:
+      // e.style.background = "#eef2f9"; 
+
       const opt = {
-        filename: 'CV_Omar_Samir.pdf', // Nombre de tu archivo
-        image: { type: "jpeg", quality: 0.98 },
-        margin: 0,
-        // Configuración clave de html2canvas
+        margin: 0, // Sin márgenes externos de PDF
+        filename: 'CV_Omar_Samir.pdf',
+        image: { type: "jpeg", quality: 1 },
         html2canvas: { 
-          scale: 2, // Mejora significativamente la resolución de las letras y fotos
-          windowWidth: 1200, // Fuerza un ancho de pantalla de escritorio para evitar que se active el modo móvil
-          useCORS: true // Ayuda a cargar iconos e imágenes externas sin problemas
+          scale: 2, // Calidad alta
+          useCORS: true 
         },
-        jsPDF: { unit: "pt", format: "letter", orientation: "portrait" },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] }
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
       };
 
-      // Generamos el PDF sin alterar el CSS manualmente
-      html2pdf().set(opt).from(e).save();
+      // 3. Generamos el PDF
+      html2pdf().set(opt).from(e).save().then(() => {
+        // 4. Restauramos los estilos originales inmediatamente después de descargar
+        e.style.maxWidth = originalMaxWidth || "1400px";
+        e.style.width = originalWidth || "100%";
+        e.style.margin = originalMargin || "1.5rem";
+        e.style.background = originalBg;
+      });
     }
   </script>
 </body>
