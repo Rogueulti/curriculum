@@ -188,41 +188,43 @@ Además, cuento con experiencia en mantenimiento preventivo y correctivo, instal
   <!-- JS PERSONAL -->
 <script>
     function PDF() {
-      const e = document.querySelector(".container");
+      // 1. Seleccionamos el contenedor original
+      const originalElement = document.querySelector(".container");
 
-      // 1. Guardamos los estilos originales para no romper tu página web
-      const originalMaxWidth = e.style.maxWidth;
-      const originalWidth = e.style.width;
-      const originalMargin = e.style.margin;
-      const originalBg = e.style.background;
+      // 2. Creamos un clon exacto para manipularlo sin afectar tu pantalla
+      const clone = originalElement.cloneNode(true);
+      document.body.appendChild(clone);
 
-      // 2. Forzamos el contenedor a un tamaño de escritorio fijo
-      e.style.maxWidth = "1100px";
-      e.style.width = "1100px";
-      e.style.margin = "0"; // Quitamos el margen para aprovechar todo el ancho del PDF
-      
-      // Opcional: html2pdf a veces tiene problemas con el "backdrop-filter" (efecto cristal). 
-      // Si el fondo del PDF sale gris/blanco, descomenta la siguiente línea para forzar un fondo sólido en el PDF:
-      // e.style.background = "#eef2f9"; 
+      // 3. Le damos al clon las medidas exactas de escritorio y lo escondemos
+      clone.style.maxWidth = "1000px";
+      clone.style.width = "1000px";
+      clone.style.margin = "0";
+      clone.style.position = "absolute";
+      clone.style.top = "0";
+      clone.style.left = "-9999px"; // Lo saca de la pantalla para que no lo veas
 
+      // 4. ¡Truco pro! Ocultamos el botón de descarga en el PDF
+      const btn = clone.querySelector(".btn");
+      if (btn) btn.style.display = "none";
+
+      // 5. Configuración estricta para evitar recortes
       const opt = {
-        margin: 0, // Sin márgenes externos de PDF
+        margin: [0.2, 0, 0.2, 0], // Un pequeñísimo margen superior/inferior en pulgadas para respirar
         filename: 'CV_Omar_Samir.pdf',
         image: { type: "jpeg", quality: 1 },
         html2canvas: { 
-          scale: 2, // Calidad alta
-          useCORS: true 
+          scale: 2, 
+          useCORS: true,
+          windowWidth: 1000, // Obliga a la cámara a capturar los 1000px completos
+          width: 1000        // Previene el recorte del lado derecho
         },
         jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
       };
 
-      // 3. Generamos el PDF
-      html2pdf().set(opt).from(e).save().then(() => {
-        // 4. Restauramos los estilos originales inmediatamente después de descargar
-        e.style.maxWidth = originalMaxWidth || "1400px";
-        e.style.width = originalWidth || "100%";
-        e.style.margin = originalMargin || "1.5rem";
-        e.style.background = originalBg;
+      // 6. Generamos el documento desde el clon
+      html2pdf().set(opt).from(clone).save().then(() => {
+        // 7. Eliminamos el clon una vez que la descarga inicia
+        document.body.removeChild(clone);
       });
     }
   </script>
