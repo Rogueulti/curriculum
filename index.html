@@ -1,233 +1,313 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currículum Web - Omar Samir Hernández López</title>
-
-  <!-- ICONOS -->
+  <title>CV Profesional - Omar Samir Hernández López</title>
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- ESTILOS PERSONALIZADOS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
-  <div class="container">
 
-    <!-- COLUMNA IZQUIERDA -->
+  <div class="theme-toggle">
+    <button onclick="toggleTheme()" id="theme-btn">
+      <span class="material-icons">dark_mode</span>
+    </button>
+  </div>
+
+  <div class="container">
     <aside class="left_side">
-      <!-- PERFIL -->
       <section class="profile">
         <div class="img_setting">
           <img src="img.jpg" alt="Foto de Omar Samir Hernández López">
         </div>
         <h2>Omar Samir Hernández López</h2>
-        <h4>Ingeniero en Sistemas Computacionales</h4>
-        <button class="btn" onclick="PDF()">Descargar PDF</button>
+        <p class="tagline">Ingeniero en Sistemas | Desarrollador Wordpress | </p>
+        <div class="actions">
+          <button class="btn main-btn" onclick="PDF()">Descargar PDF</button>
+        </div>
       </section>
 
-      <!-- CONTACTO -->
       <section class="contact-section">
-        <h4 class="title">Datos de Contacto</h4>
-        <ul class="contact-list">
-          <li><a href="https://www.linkedin.com/in/omar-samir-hernandez-lopez-aab043205" target="_blank" class="social-btn linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a></li>
-          <li><a href="mailto:hernandezlopezfreelance@gmail.com" class="social-btn email" aria-label="Correo electrónico"><i class="bx bx-envelope"></i></a></li>
-          <li><a href="https://github.com/HLSAMIR" target="_blank" class="social-btn github" aria-label="GitHub"><i class="fa-brands fa-github"></i></a></li>
-          <li><a href="https://twitter.com/OmarSamirHerna1" target="_blank" class="social-btn twitter" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
-          <li><a href="https://www.facebook.com/profile.php?id=100080200620735" target="_blank" class="social-btn facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a></li>
+        <h4 class="title">Conectemos</h4>
+        <ul class="contact-grid">
+          <li><a href="https://wa.me/7715684591" target="_blank" class="social-btn whatsapp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/omar-samir-hernandez-lopez-aab043205" target="_blank" class="social-btn linkedin"><i class="fa-brands fa-linkedin-in"></i></a></li>
+          <li><a href="https://github.com/rogueulti" target="_blank" class="social-btn github"><i class="fa-brands fa-github"></i></a></li>
+          <li><button onclick="copyEmail()" class="social-btn email" title="Copiar Correo"><i class="fa-regular fa-copy"></i></button></li>
         </ul>
+        <p class="location"><i class="material-icons">location_on</i> Pachuca, Hidalgo | Remoto</p>
       </section>
 
-      <!-- EDUCACIÓN -->
       <section class="left_items">
         <h4 class="title">Educación</h4>
-        <ul>
+        <div class="edu-item">
+          <span class="dates">2018 - 2024</span>
+          <p><strong>Ingeniería en Sistemas Computacionales</strong><br>Instituto Tecnológico de Pachuca</p>
+          <p class="cedula-badge"><i class="fa-solid fa-id-card"></i> Cédula Prof: <strong>15340192</strong></p> 
+        </div>
+      </section>
+
+<section class="left_items">
+        <h4 class="title">Certificaciones</h4>
+        <ul class="cert-list">
           <li>
-            <h5 class="dates">2018 - 2024</h5>
-            <p class="text"><strong>Ingeniería en Sistemas Computacionales</strong><br>Instituto Tecnológico de Pachuca</p>
+            <a href="https://www.skills.google/public_profiles/84c18b36-9661-4454-b410-fb7ca22013f7/badges/2625931" target="_blank" class="cert-link">
+              <i class="fa-solid fa-cloud"></i> 
+              <span><strong>Google Cloud:</strong> Cloud Computing Fundamentals</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.skills.google/public_profiles/84c18b36-9661-4454-b410-fb7ca22013f7/badges/2679301" target="_blank" class="cert-link">
+              <i class="fa-solid fa-network-wired"></i> 
+              <span><strong>Google Cloud:</strong> Networking and Security</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.skills.google/public_profiles/84c18b36-9661-4454-b410-fb7ca22013f7/badges/2679595" target="_blank" class="cert-link">
+              <i class="fa-solid fa-robot"></i> 
+              <span><strong>Google Cloud:</strong> Data, ML, and AI</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.skills.google/public_profiles/84c18b36-9661-4454-b410-fb7ca22013f7/badges/2673690" target="_blank" class="cert-link">
+              <i class="fa-solid fa-cloud"></i> 
+              <span><strong>Google Cloud:</strong> a Infrastructure in Google Cloud</span>
+            </a>
           </li>
         </ul>
       </section>
 
-      <!-- IDIOMAS -->
       <section class="left_items">
         <h4 class="title">Idiomas</h4>
-        <ul class="languages">
-          <li>
-            <span class="text">Inglés</span>
-            <div class="percent"><div style="width: 50%"></div></div>
-          </li>
-          <li>
-            <span class="text">Español</span>
-            <div class="percent"><div style="width: 100%"></div></div>
-          </li>
-        </ul>
+        <div class="lang-bar">
+          <span>Inglés (Técnico)</span>
+          <div class="progress"><div style="width: 55%"></div></div>
+        </div>
+        <div class="lang-bar">
+          <span>Español (Nativo)</span>
+          <div class="progress"><div style="width: 100%"></div></div>
+        </div>
       </section>
     </aside>
 
-    <!-- COLUMNA DERECHA -->
     <main class="right_side">
-      <!-- RESUMEN -->
       <section class="right_items">
-        <h3 class="title">Resumen de Vida</h3>
-        <p>Ingeniero en Sistemas Computacionales con experiencia en desarrollo front-end, soluciones en la nube e integración de inteligencia artificial. Poseo sólidos conocimientos en frameworks modernos, cloud computing y ciberseguridad, lo que me permite aportar una visión innovadora enfocada en la eficiencia tecnológica y la seguridad digital.
-Además, cuento con experiencia en mantenimiento preventivo y correctivo, instalación, configuración y reparación de equipos de cómputo, tanto personales como servidores. Soy una persona comprometida, con alta capacidad para el trabajo en equipo, toma de decisiones bajo presión y apoyo efectivo en proyectos colaborativos.</p>
-      </section>
+        <h3 class="title">Perfil Profesional</h3>
+          <p>Ingeniero en Sistemas Computacionales con un enfoque único que combina el <strong>rigor técnico con la creatividad visual</strong>. Especialista en desarrollo Front-End y mantenimiento de sistemas, lo que me permite diseñar interfaces de usuario intuitivas y estéticamente superiores. Comprometido con la eficiencia tecnológica y la innovación en la experiencia de usuario.</p>      </section>
 
-      <!-- EXPERIENCIA -->
-      <section class="right_items">
-        <h4 class="title">Experiencia</h4>
-
-        <div class="experience">
-          <div class="time_line"><span class="time_point"></span><span class="time_road"></span></div>
-          <div class="content">
-            <div class="interval">
-              <h5>2018 - Presente</h5><h5>Freelance</h5>
-            </div>
-            <div class="description">
-              <h4>Técnico de Computadoras</h4>
-              <p>Reparación y mantenimiento correctivo/preventivo de computadoras de escritorio y laptops.</p>
-            </div>
+          <section class="right_items">
+        <h4 class="title">Experiencia con Propósito</h4>
+        
+        <div class="exp-box">
+          <div class="exp-header">
+            <h5>2023 - 2025 | Mural Táctil</h5>
+            <h4>Ingeniero de Software y Soporte Técnico</h4>
           </div>
+          <ul>
+            <li>Desarrollo y mantenimiento de asistentes conversacionales basados en el framework <strong>RASA</strong>, optimizando la interacción mediante procesamiento de lenguaje natural.</li>
+            <li>Gestión y mantenimiento integral de aplicaciones empresariales en <strong>Microsoft Power Apps</strong>, asegurando la continuidad de los flujos de trabajo corporativos.</li>
+            <li>Administración y mantenimiento de bases de datos, garantizando la integridad, seguridad y optimización de las consultas de los sistemas.</li>
+            <li>Liderazgo en la <strong>automatización y creación de documentación técnica</strong> exhaustiva para múltiples proyectos de WordPress, facilitando su escalabilidad.</li>
+            <li>Elaboración de presentaciones ejecutivas y propuestas técnicas/comerciales de alto nivel para el desarrollo de nuevos proyectos tecnológicos.</li>
+            <li>Ejecución de pruebas de QA manuales para la detección y corrección de errores críticos antes del despliegue en producción.</li>
+          </ul>
         </div>
 
-        <div class="experience">
-          <div class="time_line"><span class="time_point"></span><span class="time_road"></span></div>
-          <div class="content">
-            <div class="interval">
-              <h5>2018 - Presente</h5><h5>Freelance</h5>
-            </div>
-            <div class="description">
-              <h4>Programador Junior</h4>
-              <p>Desarrollo básico en distintos lenguajes de programación y soporte técnico en proyectos.</p>
-            </div>
+        <div class="exp-box">
+          <div class="exp-header">
+            <h5>2018 - Presente | Freelance</h5>
+            <h4>Ingeniero de Soporte e Infraestructura IT</h4>
           </div>
-        </div>
-
-        <div class="experience">
-          <div class="time_line"><span class="time_point"></span><span class="time_road"></span></div>
-          <div class="content">
-            <div class="interval">
-              <h5>2023 - 2025</h5><h5>Mural Táctil</h5>
-            </div>
-            <div class="description">
-              <h4>Desarrollador Web</h4>
-              <p>Experiencia en desarrollo de sitios con WordPress y desde cero, además de mantenimiento, migración e implementación.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="experience">
-          <div class="time_line"><span class="time_point"></span><span class="time_road"></span></div>
-          <div class="content">
-            <div class="interval">
-              <h5>2024 - 2025</h5><h5>Mural Táctil</h5>
-            </div>
-            <div class="description">
-              <h4>Tester de Proyectos</h4>
-              <p>Pruebas manuales de software para desarrollo de soluciones, páginas web y sistemas.</p>
-            </div>
-          </div>
+          <ul>
+            <li>Diseño, despliegue y configuración de redes LAN/WLAN y Access Points para optimización de cobertura.</li>
+            <li>Implementación y configuración de sistemas de videovigilancia (CCTV) y cámaras IP de seguridad.</li>
+            <li>Soporte en ciberseguridad: recuperación de cuentas comprometidas y educación preventiva en MFA y Phishing.</li>
+          </ul>
         </div>
       </section>
 
-        <div class="experience">
-          <div class="time_line"><span class="time_point"></span><span class="time_road"></span></div>
-          <div class="content">
-            <div class="interval">
-              <h5>2023 - 2025</h5><h5>Mural Táctil</h5>
-            </div>
-            <div class="description">
-              <h4>Tec mantenimiento</h4>
-              <p>Desempeñé el puesto de Técnico en Mantenimiento, realizando mantenimiento preventivo y correctivo de equipos y sistemas tecnológicos, instalación y configuración de software y hardware, así como soporte técnico a usuarios y optimización del rendimiento de los equipos.</p>
-            </div>
+      <section class="right_items">
+        <h4 class="title">Tecnologías y Competencias</h4>
+        <div class="skill-tags">
+          <span>HTML5 / CSS3</span><span>JavaScript</span><span>Python</span><span>C#</span>
+          <span>WordPress</span><span>RASA Framework</span><span>Microsoft Power Apps</span>
+          <span>Gestión de SQL / BD</span><span>Documentación Técnica</span>
+          <span class="highlight-tag">Redes LAN / WLAN</span>
+          <span class="highlight-tag">Sistemas CCTV</span>
+          <span class="highlight-tag">Ciberseguridad Defensiva</span>
+        </div>
+      </section>
+
+      <section class="right_items">
+        <h4 class="title">Proyectos Destacados</h4>
+        <div class="project-grid">
+          <div class="project-card">
+            <h5>Asistente Inteligente (RASA Framework)</h5>
+            <p>Desarrollo de un bot conversacional con Procesamiento de Lenguaje Natural (NLP) para automatizar y escalar la atención al cliente de manera eficiente.</p>
+          </div>
+          <div class="project-card">
+            <h5>Desarrollo Ágil con WordPress</h5>
+            <p>Implementación rápida de plataformas web optimizadas, combinando diseño estructurado y herramientas ágiles para entregar interfaces funcionales y de alto impacto estético.</p>
+          </div>
+          <div class="project-card">
+            <h5>Migración y Modernización Web</h5>
+            <p>Transición de sitios web a infraestructuras modernas y actualización de sistemas heredados, minimizando tiempos de inactividad y mejorando la seguridad.</p>
+          </div>
+          <div class="project-card">
+            <h5>Optimización y Automatización</h5>
+            <p>Auditoría y mejora de sistemas web existentes para automatizar flujos de trabajo, reduciendo tareas manuales y resolviendo cuellos de botella operativos.</p>
+          </div>
+          <div class="project-card">
+            <h5>Gestión de Infraestructura Cloud</h5>
+            <p>Despliegue, configuración y administración de proyectos en plataformas de alojamiento en la nube (AWS, Microsoft Azure), garantizando estabilidad y alta disponibilidad.</p>
           </div>
         </div>
-
-      <!-- HABILIDADES -->
-      <section class="right_items">
-        <h4 class="title">Habilidades Profesionales</h4>
-        <div class="skills"><h4>Arquitectura de Computadoras</h4><div class="percent"><div style="width: 85%"></div></div></div>
-        <div class="skills"><h4>Sistemas Operativos</h4><div class="percent"><div style="width: 85%"></div></div></div>
-        <div class="skills"><h4>Framework RASA</h4><div class="percent"><div style="width: 75%"></div></div></div>
-        <div class="skills"><h4>Tester</h4><div class="percent"><div style="width: 45%"></div></div></div>
-        <div class="skills"><h4>Atención al Cliente</h4><div class="percent"><div style="width: 65%"></div></div></div>
-        <div class="skills"><h4>Desarrollo en WordPress</h4><div class="percent"><div style="width: 80%"></div></div></div>
       </section>
 
-      <!-- LENGUAJES DE PROGRAMACIÓN -->
       <section class="right_items">
-        <h4 class="title">Lenguajes de Programación</h4>
-        <div class="skills"><h4>HTML</h4><div class="percent"><div style="width: 98%"></div></div></div>
-        <div class="skills"><h4>CSS</h4><div class="percent"><div style="width: 75%"></div></div></div>
-        <div class="skills"><h4>JavaScript</h4><div class="percent"><div style="width: 25%"></div></div></div>
-        <div class="skills"><h4>Python</h4><div class="percent"><div style="width: 50%"></div></div></div>
-        <div class="skills"><h4>C#</h4><div class="percent"><div style="width: 30%"></div></div></div>
+        <h4 class="title">Tecnologías y Competencias</h4>
+        <div class="skill-tags">
+          <span>HTML5 / CSS3</span><span>JavaScript</span><span>Python</span><span>C#</span><span>WordPress</span><span>RASA Framework</span>
+          <span class="highlight-tag">Redes LAN / WLAN</span>
+          <span class="highlight-tag">Sistemas CCTV</span>
+          <span class="highlight-tag">Mantenimiento de Hardware</span>
+          <span class="highlight-tag">Fundamentos de Ciberseguridad</span>
+          <span class="highlight-tag">Protección de Identidad y Accesos</span>
+        </div>
       </section>
 
-      <!-- PASATIEMPOS -->
       <section class="right_items">
-        <h4 class="title">Pasatiempos</h4>
-        <ul class="hobby">
-          <li><span class="material-icons">cookie</span> Cocina</li>
-          <li><span class="material-icons">mouse</span> Diseño Gráfico</li>
-          <li><span class="material-icons">videogame_asset</span> Videojuegos</li>
-          <li><span class="material-icons">brush</span> Dibujo</li>
-        </ul>
+        <h4 class="title">Sitios Web Desarrollados</h4>
+        <div class="web-portfolio">
+          <a href="https://mexchina.org/" target="_blank" class="web-link">
+                <div class="web-info">
+                  <i class="fa-brands fa-wordpress"></i>
+                  <span>
+                    <strong>Mexchina (Portal Binacional):</strong> 
+                    Lideré el proceso de modernización tecnológica, ejecutando la actualización mayor del core de WordPress desde versiones heredadas (5.x) y realizando la migración crítica de infraestructura de hosting, garantizando la integridad de datos y la estabilidad del servicio.
+                  </span>
+                </div>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          
+          <!-- <a href="https://tusitio2.com" target="_blank" class="web-link">
+            <div class="web-info">
+              <i class="fa-brands fa-wordpress"></i>
+              <span><strong>E-commerce Cliente X:</strong> Optimización de carga y mantenimiento de base de datos.</span>
+            </div>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a> -->
+        </div>
       </section>
+
+      <section class="right_items no-pdf"> <h4 class="title">Evidencia de Infraestructura y Soporte</h4>
+        <div class="photo-gallery">
+          <div class="photo-item">
+            <img src="foto-cctv.jpeg" alt="Instalación CCTV">
+            <p>Implementación de Cámaras IP</p>
+          </div>
+          <div class="photo-item">
+            <img src="foto-redes.jpeg" alt="Configuración de Redes">
+            <p>Despliegue de Red WLAN</p>
+          </div>
+          <div class="photo-item">
+            <img src="foto-mantenimiento.jpeg" alt="Mantenimiento Hardware">
+            <p>Soporte a Servidores</p>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
-  <!-- LIBRERÍAS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // 1. Cambio de Tema (Modo Oscuro)
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.getElementById('theme-btn');
+  if (html.getAttribute('data-theme') === 'light') {
+    html.setAttribute('data-theme', 'dark');
+    btn.innerHTML = '<span class="material-icons">light_mode</span>';
+  } else {
+    html.setAttribute('data-theme', 'light');
+    btn.innerHTML = '<span class="material-icons">dark_mode</span>';
+  }
+}
 
-  <!-- JS PERSONAL -->
+// 2. Copiar Correo al Portapapeles
+function copyEmail() {
+  const email = "ultihomura@outlook.com";
+  navigator.clipboard.writeText(email);
+  alert("Correo copiado al portapapeles: " + email);
+}
 
-<script>
-    function PDF() {
-      const e = document.querySelector(".container");
-      const btn = document.querySelector(".btn");
+// 3. Generar PDF Profesional (Script de Alta Seguridad)
+function PDF() {
+  const element = document.querySelector(".container");
+  const themeBtn = document.querySelector(".theme-toggle");
+  const downloadBtn = document.querySelector(".main-btn");
 
-      // 1. Guardamos tus estilos originales para no romper la web
-      const origMaxWidth = e.style.maxWidth;
-      const origWidth = e.style.width;
-      const origMargin = e.style.margin;
+  // 1. Guardar estilos originales
+  const origBodyDisplay = document.body.style.display;
+  const origWidth = element.style.width;
+  const origMaxWidth = element.style.maxWidth;
+  const origMargin = element.style.margin;
+  const gallery = document.querySelector(".no-pdf");
 
-      // 2. Forzamos un ancho específico mayor a 800px (para que tu CSS mantenga las 2 columnas)
-      // Usamos 950px, que encaja muy bien en una hoja tamaño carta.
-      e.style.maxWidth = "950px";
-      e.style.width = "950px";
-      e.style.margin = "0 auto"; // Centrado sin márgenes extraños
-      btn.style.display = "none"; // Ocultamos el botón para que no salga en el PDF
+  // 2. Ocultar botones
+  if(themeBtn) themeBtn.style.display = "none";
+  if(downloadBtn) downloadBtn.style.display = "none";
+  if(gallery) gallery.style.display = "none"; // Oculta las fotos en el PDF
 
-      // 3. Configuración del PDF
-      const opt = {
-        margin: [0.2, 0, 0.2, 0], // Pequeño margen superior e inferior en pulgadas
-        filename: 'CV_Omar_Samir.pdf',
-        image: { type: "jpeg", quality: 1 },
-        html2canvas: { 
-          scale: 2, // Alta resolución
-          useCORS: true,
-          windowWidth: 950 // MUY IMPORTANTE: Le decimos a la "cámara" que no recorte antes de los 950px
-        },
-        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
-        pagebreak: { mode: ["avoid-all", "css", "legacy"] } // Evita que corte las letras a la mitad al cambiar de página
-      };
+  // 3. Preparar el lienzo: Forzamos alineación natural y medidas exactas
+  document.body.style.display = "block"; // Evita que flexbox pelee con la cámara
+  element.style.margin = "0"; // Quitamos márgenes para evitar espacios blancos
+  element.style.width = "1050px";
+  element.style.maxWidth = "1050px";
 
-      // 4. Generamos el PDF
-      html2pdf().set(opt).from(e).save().then(() => {
-        // 5. Restauramos todo inmediatamente después de procesarlo
-        e.style.maxWidth = origMaxWidth;
-        e.style.width = origWidth;
-        e.style.margin = origMargin;
-        btn.style.display = "block"; // Volvemos a mostrar el botón en tu web
-      });
-    }
+  // Subimos el scroll por si acaso estabas viendo la parte de abajo
+  window.scrollTo(0, 0);
+
+  // 4. Opciones de html2pdf
+  const opt = {
+    margin: [0.15, 0, 0.15, 0], // Pequeño respiro arriba y abajo
+    filename: 'CV_Omar_Samir_Hernandez.pdf',
+    image: { type: 'jpeg', quality: 1 },
+    html2canvas: { 
+      scale: 2, 
+      useCORS: true,
+      windowWidth: 1050 // Obligamos a capturar el mismo ancho forzado
+    },
+    jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+  };
+
+  // 5. El truco principal: Damos 150ms al navegador para redibujar la pantalla antes de capturar
+  setTimeout(() => {
+    html2pdf().set(opt).from(element).save().then(() => {
+      restaurarSitio();
+    }).catch(err => {
+      console.error("Error al generar PDF:", err);
+      restaurarSitio(); // Si algo sale mal, restauramos tu sitio de todos modos
+    });
+  }, 150);
+
+  // Función para devolver todo a su estado original sin recargar la página
+  function restaurarSitio() {
+    document.body.style.display = origBodyDisplay;
+    element.style.width = origWidth;
+    element.style.maxWidth = origMaxWidth;
+    element.style.margin = origMargin;
+    if(themeBtn) themeBtn.style.display = "block";
+    if(downloadBtn) downloadBtn.style.display = "block";
+    if(gallery) gallery.style.display = "block";
+  }
+}
+
   </script>
-  
 </body>
 </html>
