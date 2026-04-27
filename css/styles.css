@@ -1,19 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
 
-/* VARIABLES */
+/* 1. VARIABLES (Unificadas) */
 :root {
-  --base: #f8f9fa;
   --primary: #39159c;
   --primary-trans: #39159c7e;
   --secondary: #0e5dd4;
+  --bg-body: #f0f2f5;
+  --bg-card: #ffffff;
+  --text-main: #222;
+  --text-light: #555;
   --accent: #ffffff;
-  --dark: #222;
-  --shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   --radius: 12px;
   --transition: all 0.3s ease;
 }
 
-/* GENERAL SETTINGS */
+/* Modo Oscuro */
+[data-theme="dark"] {
+  --primary: #8a63ff;
+  --primary-trans: rgba(138, 99, 255, 0.15);
+  --secondary: #4a90f2;
+  --bg-body: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --text-light: #b0b0b0;
+  --accent: #121212;
+}
+
+/* 2. CONFIGURACIÓN GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -22,296 +36,230 @@
 }
 
 body {
-  background: radial-gradient(circle at top left, rgba(63, 94, 251, 1) 0%, #fff 100%);
+  background: var(--bg-body);
+  color: var(--text-main);
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   font-size: 16px;
-  color: var(--dark);
+  transition: background 0.3s ease;
 }
 
-/* LAYOUT */
+/* 3. LAYOUT PRINCIPAL */
 .container {
-  position: relative;
+  background: var(--bg-card);
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  max-width: 1400px;
+  grid-template-columns: 350px 1fr;
+  max-width: 1100px;
   width: 100%;
-  margin: 1.5rem;
-  padding: 20px;
+  margin: 2rem auto;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(20px);
   box-shadow: var(--shadow);
   overflow: hidden;
-  z-index: 10;
+  position: relative;
 }
 
 .left_side {
   background: var(--primary-trans);
-  color: var(--accent);
+  color: var(--text-main);
   padding: 1.5rem;
-  border-radius: var(--radius);
 }
 
 .right_side {
-  background: var(--base);
   padding: 1.5rem;
-  border-radius: var(--radius);
 }
 
-/* PROFILE */
+/* 4. PERFIL Y CONTACTO */
 .profile {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
+[data-theme="dark"] .profile { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
 
 .profile .img_setting {
-  position: relative;
-  width: 9rem;
-  height: 9rem;
+  width: 9rem; height: 9rem;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
+.profile img { width: 100%; height: 100%; object-fit: cover; }
+.profile h2 { font-size: 1.4rem; font-weight: 600; margin-top: 0.8rem; }
+.tagline { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem; }
 
-.profile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.profile h4 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-top: 0.8rem;
-}
-
-.profile h5 {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.profile .btn {
-  margin-top: 0.8rem;
+.btn {
   padding: 0.5rem 1.5rem;
   font-size: 0.9rem;
   font-weight: 600;
   background: var(--secondary);
-  color: var(--accent);
+  color: #fff;
   border: none;
   border-radius: 25px;
   cursor: pointer;
   transition: var(--transition);
 }
+.btn:hover { filter: brightness(1.2); transform: translateY(-2px); }
 
-.profile .btn:hover {
-  background: var(--accent);
-  color: var(--secondary);
+.contact-section { text-align: center; padding: 15px 0; }
+.contact-grid { display: flex; justify-content: center; gap: 15px; list-style: none; padding: 0.5rem 0; }
+.social-btn { 
+  width: 40px; height: 40px; border-radius: 50%; display: flex; 
+  align-items: center; justify-content: center; transition: 0.3s;
+  background: var(--secondary); color: white; border: none; cursor: pointer; font-size: 1.2rem;
 }
-
-/* LEFT ITEMS */
-.left_items {
-  margin-top: 1.5rem;
-}
-
-.left_items .title {
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-
-.left_items ul {
-  list-style: none;
-}
-
-.left_items ul li {
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.left_items ul li .icons {
-  color: var(--secondary);
-  font-size: 1.2rem;
-}
-
-.languages {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
-}
-
-.languages .percent {
-  width: 100%;
-  height: 0.4rem;
-  background: rgba(255, 255, 255, 0.3);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.languages .percent div {
-  height: 100%;
-  background: var(--secondary);
-}
-
-/* RIGHT SIDE */
-.right_items {
-  margin-bottom: 2rem;
-}
-
-.right_items .title {
-  color: var(--primary);
-  font-weight: 700;
-  margin-bottom: 0.8rem;
-  text-transform: uppercase;
-}
-
-/* EXPERIENCE */
-.experience {
-  display: flex;
-  margin: 1rem 0;
-  gap: 1rem;
-}
-
-.experience .time_line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.time_point {
-  width: 1.2rem;
-  height: 1.2rem;
-  background: var(--secondary);
-  border-radius: 50%;
-  margin-bottom: 0.3rem;
-}
-
-.time_road {
-  width: 0.2rem;
-  background: var(--secondary);
-  flex-grow: 1;
-}
-
-.experience .content {
-  display: grid;
-  grid-template-columns: 10rem auto;
-  gap: 1rem;
-}
-
-.experience .interval {
-  text-align: center;
-  color: var(--primary);
-  font-weight: 500;
-}
-
-.experience .description h4 {
-  color: var(--secondary);
-}
-
-/* SKILLS */
-.skills {
-  display: grid;
-  grid-template-columns: 10rem 1fr;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem 0;
-}
-
-.skills .percent {
-  width: 100%;
-  height: 0.8rem;
-  background: rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.skills .percent div {
-  width: 100%;
-  height: 100%;
-  background: var(--secondary);
-}
-
-/* HOBBY */
-.hobby {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
-  gap: 1rem;
-  text-align: center;
-}
-
-.hobby li {
-  list-style: none;
-  font-size: 1.5rem;
-  color: var(--secondary);
-}
-
-/* CONTACT */
-.contact-section {
-  text-align: center;
-  padding: 20px;
-}
-
-.contact-section .title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 15px;
-}
-
-.contact-list {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.social-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  font-size: 22px;
-  color: #fff;
-  text-decoration: none;
-  transition: var(--transition);
-}
-
+.social-btn:hover { transform: scale(1.1); }
+.whatsapp { background-color: #25D366; }
 .linkedin { background-color: #0077b5; }
 .github { background-color: #333; }
-.twitter { background-color: #1da1f2; }
-.facebook { background-color: #1877f2; }
 .email { background-color: #d44638; }
+.location { font-size: 0.85rem; margin-top: 10px; color: var(--text-light); }
 
-.social-btn:hover {
-  transform: scale(1.1);
-  opacity: 0.9;
+/* 5. SECCIONES (Izquierda y Derecha) */
+.left_items { margin-top: 1.5rem; }
+.left_items .title, .right_items .title { font-weight: 700; margin-bottom: 0.5rem; color: var(--primary); }
+.right_items .title { text-transform: uppercase; }
+.right_items { margin-bottom: 1.2rem; }
+.right_items p { font-size: 0.95rem; line-height: 1.5; color: var(--text-light); }
+
+.edu-item p { font-size: 0.9rem; margin-top: 5px; }
+.cedula-badge { display: inline-block; margin-top: 5px; background-color: var(--secondary); color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; }
+.dates { font-weight: 600; color: var(--primary); font-size: 0.9rem; }
+
+.cert-list { list-style: none; }
+.cert-list li { font-size: 0.85rem; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 8px; }
+.cert-list i { color: var(--secondary); margin-top: 3px; }
+
+.lang-bar { margin-bottom: 10px; font-size: 0.9rem; font-weight: 500; }
+.progress { width: 100%; height: 0.5rem; background: rgba(0, 0, 0, 0.1); border-radius: 4px; overflow: hidden; margin-top: 3px; }
+[data-theme="dark"] .progress { background: rgba(255, 255, 255, 0.1); }
+.progress div { height: 100%; background: var(--secondary); }
+
+/* Experiencia */
+.exp-box { margin-bottom: 0.8rem; }
+.exp-header { margin-bottom: 5px; }
+.exp-header h5 { color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+.exp-header h4 { font-size: 1rem; color: var(--text-main); }
+.exp-box ul { padding-left: 1.2rem; font-size: 0.9rem; color: var(--text-light); }
+.exp-box ul li { margin-bottom: 4px; }
+
+/* Proyectos */
+.project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.project-card { background: rgba(0,0,0,0.03); padding: 1rem; border-radius: 10px; border-left: 4px solid var(--primary); }
+[data-theme="dark"] .project-card { background: rgba(255,255,255,0.05); }
+.project-card h5 { color: var(--text-main); font-size: 1rem; margin-bottom: 5px; }
+
+/* Habilidades */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-tags span { background: var(--primary); color: white; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; }
+.skill-tags .highlight-tag { background: transparent; color: var(--primary); border: 1px solid var(--primary); font-weight: 600; }
+[data-theme="dark"] .skill-tags .highlight-tag { color: var(--secondary); border-color: var(--secondary); }
+
+/* Theme Toggle */
+.theme-toggle { position: fixed; top: 20px; right: 20px; z-index: 100; }
+#theme-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 50%; cursor: pointer; }
+
+/* RESPONSIVO */
+@media (max-width: 850px) {
+  .container { grid-template-columns: 1fr; margin: 1rem; }
 }
 
-/* RESPONSIVE */
-@media (max-width: 800px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
+.cert-list { 
+  list-style: none; 
+}
+.cert-list li { 
+  font-size: 0.85rem; 
+  margin-bottom: 12px; /* Un poco más de espacio entre cada una */
+  display: flex; 
+  align-items: flex-start; 
+  gap: 10px; 
+  color: var(--text-main);
+}
+.cert-list i { 
+  color: var(--secondary); 
+  margin-top: 4px; 
+  font-size: 1rem;
+}
+.cert-list span {
+  line-height: 1.3;
 }
 
-@media (max-width: 500px) {
-  .experience .content {
-    grid-template-columns: 1fr;
-  }
+/* Estilo para los enlaces de certificaciones */
+.cert-link {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit; /* Mantiene el color de texto de tu CV */
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: var(--transition);
+  cursor: pointer;
+}
 
-  .hobby {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.cert-link:hover {
+  color: var(--secondary); /* Cambia al color azul de tu tema al pasar el mouse */
+  transform: translateX(5px); /* Desplazamiento suave a la derecha */
+}
+
+.cert-link i {
+  margin-top: 4px;
+  font-size: 1rem;
+  color: var(--secondary); /* Los iconos siempre resaltan en azul */
+}
+
+/* Portafolio Web */
+.web-portfolio {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.web-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 15px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+[data-theme="dark"] .web-link { background: rgba(255, 255, 255, 0.05); }
+
+.web-link:hover {
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+}
+.web-info { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; }
+.web-info i { color: #21759b; font-size: 1.3rem; } /* Color oficial WordPress */
+
+/* Galería de Fotos */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-top: 10px;
+}
+.photo-item {
+  background: var(--bg-card);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.photo-item img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover; /* Recorta la foto para que todas midan lo mismo */
+  transition: 0.3s;
+}
+.photo-item img:hover { transform: scale(1.05); }
+.photo-item p {
+  font-size: 0.75rem;
+  padding: 8px;
+  color: var(--text-light);
+  font-weight: 500;
 }
