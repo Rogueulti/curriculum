@@ -186,21 +186,26 @@ Además, cuento con experiencia en mantenimiento preventivo y correctivo, instal
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- JS PERSONAL -->
-  <script>
+<script>
     function PDF() {
       const e = document.querySelector(".container");
-      e.style.maxWidth = "700px";
 
       const opt = {
-        filename: 'resume.pdf',
+        filename: 'CV_Omar_Samir.pdf', // Nombre de tu archivo
         image: { type: "jpeg", quality: 0.98 },
         margin: 0,
+        // Configuración clave de html2canvas
+        html2canvas: { 
+          scale: 2, // Mejora significativamente la resolución de las letras y fotos
+          windowWidth: 1200, // Fuerza un ancho de pantalla de escritorio para evitar que se active el modo móvil
+          useCORS: true // Ayuda a cargar iconos e imágenes externas sin problemas
+        },
         jsPDF: { unit: "pt", format: "letter", orientation: "portrait" },
         pagebreak: { mode: ["avoid-all", "css", "legacy"] }
       };
 
+      // Generamos el PDF sin alterar el CSS manualmente
       html2pdf().set(opt).from(e).save();
-      setTimeout(() => { e.style.maxWidth = "1400px"; }, 2000);
     }
   </script>
 </body>
