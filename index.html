@@ -186,47 +186,48 @@ Además, cuento con experiencia en mantenimiento preventivo y correctivo, instal
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <!-- JS PERSONAL -->
+
 <script>
     function PDF() {
-      // 1. Seleccionamos el contenedor original
-      const originalElement = document.querySelector(".container");
+      const e = document.querySelector(".container");
+      const btn = document.querySelector(".btn");
 
-      // 2. Creamos un clon exacto para manipularlo sin afectar tu pantalla
-      const clone = originalElement.cloneNode(true);
-      document.body.appendChild(clone);
+      // 1. Guardamos tus estilos originales para no romper la web
+      const origMaxWidth = e.style.maxWidth;
+      const origWidth = e.style.width;
+      const origMargin = e.style.margin;
 
-      // 3. Le damos al clon las medidas exactas de escritorio y lo escondemos
-      clone.style.maxWidth = "1000px";
-      clone.style.width = "1000px";
-      clone.style.margin = "0";
-      clone.style.position = "absolute";
-      clone.style.top = "0";
-      clone.style.left = "-9999px"; // Lo saca de la pantalla para que no lo veas
+      // 2. Forzamos un ancho específico mayor a 800px (para que tu CSS mantenga las 2 columnas)
+      // Usamos 950px, que encaja muy bien en una hoja tamaño carta.
+      e.style.maxWidth = "950px";
+      e.style.width = "950px";
+      e.style.margin = "0 auto"; // Centrado sin márgenes extraños
+      btn.style.display = "none"; // Ocultamos el botón para que no salga en el PDF
 
-      // 4. ¡Truco pro! Ocultamos el botón de descarga en el PDF
-      const btn = clone.querySelector(".btn");
-      if (btn) btn.style.display = "none";
-
-      // 5. Configuración estricta para evitar recortes
+      // 3. Configuración del PDF
       const opt = {
-        margin: [0.2, 0, 0.2, 0], // Un pequeñísimo margen superior/inferior en pulgadas para respirar
+        margin: [0.2, 0, 0.2, 0], // Pequeño margen superior e inferior en pulgadas
         filename: 'CV_Omar_Samir.pdf',
         image: { type: "jpeg", quality: 1 },
         html2canvas: { 
-          scale: 2, 
+          scale: 2, // Alta resolución
           useCORS: true,
-          windowWidth: 1000, // Obliga a la cámara a capturar los 1000px completos
-          width: 1000        // Previene el recorte del lado derecho
+          windowWidth: 950 // MUY IMPORTANTE: Le decimos a la "cámara" que no recorte antes de los 950px
         },
-        jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+        pagebreak: { mode: ["avoid-all", "css", "legacy"] } // Evita que corte las letras a la mitad al cambiar de página
       };
 
-      // 6. Generamos el documento desde el clon
-      html2pdf().set(opt).from(clone).save().then(() => {
-        // 7. Eliminamos el clon una vez que la descarga inicia
-        document.body.removeChild(clone);
+      // 4. Generamos el PDF
+      html2pdf().set(opt).from(e).save().then(() => {
+        // 5. Restauramos todo inmediatamente después de procesarlo
+        e.style.maxWidth = origMaxWidth;
+        e.style.width = origWidth;
+        e.style.margin = origMargin;
+        btn.style.display = "block"; // Volvemos a mostrar el botón en tu web
       });
     }
   </script>
+  
 </body>
 </html>
